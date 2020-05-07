@@ -1,0 +1,25 @@
+from axelrod import Player
+
+class Group1(Player):
+    """ A player starts by defecting in the first and second round. """
+    def strategy(self, opponent):
+        """ Begins by playing 'D', Then 'D' """
+        #This is affected by the history of the opponent: the strategy simply repeats the last action of the opponent ""
+    
+        def prob(self,opponent):
+            if opponent.history[-2]=='C' and oppnent.history[-1]=='C':
+                return 'D'
+            elif opponent.history[-2]=='C' and oppnent.history[-1]=='D':
+                return 'D'
+            elif opponent.history[-2]=='D' and oppnent.history[-1]=='C':
+                return 'C'
+            elif opponent.history[-2]=='D' and oppnent.history[-1]=='D':
+                return 'D'
+        try:
+            return prob(self,opponent) 
+        except IndexError:
+            return 'D'
+
+    def __repr__(self):
+        """ The string method for the strategy. """
+        return 'GROUP1'
